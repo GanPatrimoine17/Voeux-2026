@@ -45,23 +45,26 @@
       gap:14px;
     }
 
-    .header{
-      display:flex;
-      align-items:flex-start;
-      justify-content:flex-start; /* tag supprimé */
-      gap:16px;
+      .header{
+  display:block;
+  width:100%;
+}
+
     }
     /* Titre sur une ligne (desktop), 2 lignes autorisées sur petits écrans */
     .title-one-line{
-      margin:0;
-      font-size: clamp(18px, 2.2vw, 34px);
-      line-height:1.15;
-      letter-spacing:-.02em;
-      white-space: nowrap;
-    }
-    @media (max-width: 520px){
-      .title-one-line{ white-space: normal; }
-    }
+  margin:0;
+  font-size: clamp(16px, 1.6vw, 26px); /* ⬅️ plus petit */
+  line-height:1.2;
+  letter-spacing:-0.01em;
+  white-space: nowrap;     /* force 1 ligne */
+  width:100%;
+}
+   @media (max-width: 520px){
+  .title-one-line{
+    white-space: normal;  /* 2 lignes autorisées sur mobile */
+  }
+}
 
     .grid{
       flex:1;
@@ -490,6 +493,7 @@
 
 </body>
 </html>
+
 
 
 
