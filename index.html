@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vœux 2026 - Gan Pat 17</title>
   <style>
+    .title-one-line{
+  white-space: nowrap;          /* force 1 seule ligne */
+  font-size: clamp(18px, 2.2vw, 34px); /* léger ajustement */
+  letter-spacing:-.02em;
+}
+@media (max-width: 520px){
+  .title-one-line{
+    white-space: normal;  /* sur petits écrans, on autorise 2 lignes */
+  }
+}
     :root{
       --gan-green:#0B7A4B;
       --gan-blue:#1E4E8C;
@@ -33,12 +43,9 @@
       overflow:hidden;
     }
     .pad{ padding:22px; height:100%; display:flex; flex-direction:column; gap:14px; }
-    .header{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
-    h1{ margin:0; font-size: clamp(20px, 2.4vw, 34px); line-height:1.15; letter-spacing:-.02em; }
-    .tag{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 12px; background:#f1f5f9; border:1px solid var(--border);
-      border-radius:999px; color:var(--muted); font-weight:600; font-size:13px; white-space:nowrap;
+    <div class="header">
+  <h1 class="title-one-line">En 2026, voulez-vous faire partie du club Gan Patrimoine 17&nbsp;?</h1>
+</div>
     }
     .dot{width:10px; height:10px; border-radius:50%; background:var(--gan-green);}
 
@@ -114,9 +121,11 @@
   place-items:center;
   text-transform:uppercase;
 
-  transform: translateY(28px); /* ⬅️ descendre légèrement */
-    }
-    .center-btn:active{ transform: scale(.98); }
+  transform: translateY(28px);
+}
+.center-btn:active{
+  transform: translateY(28px) scale(.98);
+}
     .center-btn[disabled]{ opacity:.55; cursor:not-allowed; }
 
     .theme-card{ padding:14px; border-top:1px solid var(--border); background:#fff; }
@@ -158,8 +167,7 @@
       <div class="header">
         <h1> <p> En 2026, voulez-vous faire partie du <p>
           <p> club Gan Patrimoine 17&nbsp;?<p> </h1>
-        <div class="tag"><span class="dot"></span> Club exclusif • Vœux 2026</div>
-      </div>
+              </div>
 
       <div class="grid">
 
@@ -371,6 +379,7 @@
 
 </body>
 </html>
+
 
 
 
