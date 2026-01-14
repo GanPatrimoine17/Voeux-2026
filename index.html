@@ -160,7 +160,7 @@
       position:absolute;
       left:50%;
       top:50%;
-      transform: translate(-50%, -50%) translateY(0px);
+      transform: translate(-50%, -50%) translateY(-6px); /* ✅ remonte */
       z-index:4;
 
       width:100px;
@@ -178,7 +178,7 @@
       place-items:center;
       text-transform:uppercase;
     }
-    .center-btn:active{ transform: translate(-50%, -50%) translateY(28px) scale(.98); }
+    .center-btn:active{ transform: translate(-50%, -50%) translateY(-6px) scale(.98); }
     .center-btn[disabled]{ opacity:.55; cursor:not-allowed; }
 
     .theme-card{
@@ -493,4 +493,5 @@
 
 </body>
 </html>
+
 
