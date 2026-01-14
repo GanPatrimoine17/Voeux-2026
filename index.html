@@ -45,6 +45,14 @@
       flex-direction:column;
       gap:14px;
     }
+    
+.wheel-center{
+  position: relative;
+  width: min(420px, 92%);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+}
 
     /* ✅ FIX: header OK, pas d’accolade en trop */
     .header{ display:block; width:100%; }
@@ -157,28 +165,31 @@
 
     /* Bouton au centre */
     .center-btn{
-      position:absolute;
-      left:50%;
-      top:50%;
-      transform: translate(-50%, -50%) translateY(-6px); /* ✅ remonte */
-      z-index:4;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%); /* 🎯 centre EXACT */
+  z-index:4;
 
-      width:100px;
-      height:100px;
-      border-radius:999px;
-      border:2px solid #e2e8f0;
-      background: var(--gan-green);
-      color:#fff;
-      font-weight:900;
-      font-size:13px;
-      letter-spacing:.08em;
-      cursor:pointer;
-      box-shadow: 0 12px 20px rgba(11,122,75,.18);
-      display:grid;
-      place-items:center;
-      text-transform:uppercase;
-    }
-    .center-btn:active{ transform: translate(-50%, -50%) translateY(-6px) scale(.98); }
+  width:90px;
+  height:90px;
+  border-radius:999px;
+  border:2px solid #e2e8f0;
+  background: var(--gan-green);
+  color:#fff;
+  font-weight:900;
+  font-size:12px;
+  letter-spacing:.08em;
+  cursor:pointer;
+  box-shadow: 0 12px 20px rgba(11,122,75,.18);
+  display:grid;
+  place-items:center;
+  text-transform:uppercase;
+}
+    .center-btn:active{
+  transform: translate(-50%, -50%) scale(.97);
+}
+
     .center-btn[disabled]{ opacity:.55; cursor:not-allowed; }
 
     .theme-card{
@@ -295,10 +306,14 @@
             <div class="wheel-title">La roue patrimoniale</div>
 
             <div class="wheel-area">
-              <div class="pointer" aria-hidden="true"></div>
-              <canvas id="wheel" width="520" height="520" aria-label="Roue"></canvas>
-              <button id="startBtn" class="center-btn">LANCER</button>
-            </div>
+  <div class="pointer"></div>
+
+  <div class="wheel-center">
+    <canvas id="wheel" width="520" height="520"></canvas>
+    <button id="startBtn" class="center-btn">LANCER</button>
+  </div>
+</div>
+
 
             <div class="theme-card" aria-live="polite">
               <div class="theme-label">Thématique</div>
@@ -493,5 +508,6 @@
 
 </body>
 </html>
+
 
 
