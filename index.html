@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vœux 2026 - Gan Pat 17</title>
+
   <style>
     :root{
       --gan-green:#0B7A4B;
@@ -45,26 +46,26 @@
       gap:14px;
     }
 
-      .header{
-  display:block;
-  width:100%;
-}
-
+    /* ✅ FIX : pas d'accolade en trop ici */
+    .header{
+      display:block;
+      width:100%;
     }
+
     /* Titre sur une ligne (desktop), 2 lignes autorisées sur petits écrans */
     .title-one-line{
-  margin:0;
-  font-size: clamp(16px, 1.6vw, 26px); /* ⬅️ plus petit */
-  line-height:1.2;
-  letter-spacing:-0.01em;
-  white-space: nowrap;     /* force 1 ligne */
-  width:100%;
-}
-   @media (max-width: 520px){
-  .title-one-line{
-    white-space: normal;  /* 2 lignes autorisées sur mobile */
-  }
-}
+      margin:0;
+      font-size: clamp(16px, 1.6vw, 26px);
+      line-height:1.2;
+      letter-spacing:-0.01em;
+      white-space: nowrap;
+      width:100%;
+    }
+    @media (max-width: 520px){
+      .title-one-line{
+        white-space: normal;
+      }
+    }
 
     .grid{
       flex:1;
@@ -137,7 +138,7 @@
       display:grid;
       place-items:center;
       padding:10px;
-      min-height:0;
+      min-height:420px; /* ✅ aide dans certains embeds */
       user-select:none;
     }
     canvas{
@@ -177,7 +178,6 @@
       display:grid;
       place-items:center;
       text-transform:uppercase;
-
       transform: translateY(28px);
     }
     .center-btn:active{
@@ -351,7 +351,7 @@
     { label: "Prévoyance",   color: "#F1F5F9", text: "En cas d’accident de la vie comment assurer la pérennité de revenus de votre famille et protéger votre conjoint ?" },
     { label: "Fiscalité",    color: "#FFF7E6", text: "Comment vous assurer que vos revenus soient bien déclarés, optimiser votre fiscalité 2026 dans un contexte de Loi de finance incertain ?" },
     { label: "Transmission", color: "#F7F2FF", text: "Comment transmettre favorablement à vos enfants sans vous déposséder et tout en protégeant le conjoint survivant ?" },
-    { label: "Immobilier",   color: "#EAF2FF", text: "Vous souhaiter investir dans la pierre physique ou pierre "papier" pour vous constituer des revenus à échéances ou générer des revenus immédiats ?" }
+    { label: "Immobilier",   color: "#EAF2FF", text: "Vous souhaitez investir dans la pierre physique ou pierre \"papier\" pour vous constituer des revenus à échéances ou générer des revenus immédiats ?" }
   ];
 
   const canvas = document.getElementById("wheel");
@@ -371,7 +371,6 @@
   function drawWheel(rot = 0){
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    // fond/ombre douce
     ctx.save();
     ctx.beginPath();
     ctx.arc(cx, cy, radius, 0, Math.PI*2);
@@ -396,7 +395,6 @@
       ctx.lineWidth = 2;
       ctx.stroke();
 
-      // texte
       const mid = (a0 + a1) / 2;
       ctx.save();
       ctx.translate(cx, cy);
@@ -408,14 +406,12 @@
       ctx.restore();
     }
 
-    // anneau
     ctx.beginPath();
     ctx.arc(cx, cy, radius, 0, Math.PI*2);
     ctx.strokeStyle = "#cbd5e1";
     ctx.lineWidth = 3;
     ctx.stroke();
 
-    // centre
     ctx.beginPath();
     ctx.arc(cx, cy, 62, 0, Math.PI*2);
     ctx.fillStyle = "#ffffff";
@@ -431,7 +427,7 @@
   }
 
   function pickedSegmentIndex(rot){
-    const pointerAngle = -Math.PI / 2; // pointeur en haut
+    const pointerAngle = -Math.PI / 2;
     const a = normalizeAngle(pointerAngle - rot);
     return Math.floor(a / segAngle);
   }
@@ -447,11 +443,11 @@
     spinning = true;
     startBtn.disabled = true;
 
-    const extraSpins = 5 + Math.random() * 3; // 5 à 8 tours
+    const extraSpins = 5 + Math.random() * 3;
     const targetIndex = Math.floor(Math.random() * segments.length);
 
     const pointerAngle = -Math.PI / 2;
-    const eps = segAngle * 0.5; // centre du segment sous le pointeur
+    const eps = segAngle * 0.5;
     const desiredWheelAngle = targetIndex * segAngle + eps;
 
     let rotFinal = pointerAngle - desiredWheelAngle;
@@ -483,10 +479,8 @@
     requestAnimationFrame(frame);
   }
 
-  // Init
+  // ✅ Init (OK ici)
   drawWheel(rotation);
-
-  // clic sur le bouton OU sur la roue
   startBtn.addEventListener("click", spin);
   canvas.addEventListener("click", spin);
 </script>
